@@ -6,14 +6,14 @@
 
 <script>
 export default {
-
+  name: 'controlbar',
 };
 </script>
 
 <style>
 #controlbar-container {
     box-sizing: border-box;
-    background-color: rgb(255, 50, 0);
+    /* background-color: rgb(255, 50, 0); */
     position: fixed;
     height: 135px;
     left: 5px;

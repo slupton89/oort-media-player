@@ -2,7 +2,7 @@
   <section id="main-container">
     <nav-bar></nav-bar>
     <side-bar></side-bar>
-    <view-container></view-container>
+    <view-container>wot</view-container>
     <control-bar></control-bar>
   </section>
 </template>
@@ -14,7 +14,7 @@
   import ControlBar from './ControlBar';
 
   export default {
-    name: 'main-page',
+    name: 'mainpage',
     components: {
       ViewContainer,
       NavBar,
@@ -30,14 +30,9 @@
 <style>
   body {
     margin: 0;
-
   }
 
   #main-container {
     background-color: rgb(126, 50, 202);
-    display: flex;
-    align-content: space-between;
-    flex-direction: column;
-
   }
 </style>

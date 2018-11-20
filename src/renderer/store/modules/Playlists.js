@@ -1,6 +1,5 @@
 const state = {
-  videoSrc: 'vjs.zencdn.net/v/oceans.webm',
-  poster: '',
+  playlists: [],
 };
 
 const mutations = {
@@ -10,20 +9,23 @@ const mutations = {
   },
 };
 
+// TODO remove
 const actions = {
-  async loadVideo(context, fileName) {
+  // loadVideo(context, fileName) {
+  //   const video = fetch('localhost:8080/', { name: fileName });
+  //   //context.commit('setVideo', video);
+  //   return video;
+  // },
+};
+
+const getters = {
+  async loadVideo(fileName) {
     const video = await fetch('localhost:8080/', {
       method: 'POST',
       body: { name: fileName },
     });
-    context.commit('setVideo', video);
-    return video;
-  },
-};
 
-const getters = {
-  video(state) {
-    return state.videoSrc;
+    return video;
   },
 };
 
