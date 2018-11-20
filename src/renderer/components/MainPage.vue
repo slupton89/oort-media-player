@@ -6,7 +6,6 @@
     <control-bar></control-bar>
   </section>
 </template>
-<script type="stylesheet" src="https://jenil.github.io/bulmaswatch/superhero/bulmaswatch.min.css"></script>
 
 <script>
   import ViewContainer from './ViewContainer';
