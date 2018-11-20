@@ -1,0 +1,44 @@
+<template>
+  <section id="main-container">
+    <nav-bar></nav-bar>
+    <side-bar></side-bar>
+    <view-container></view-container>
+    <control-bar></control-bar>
+  </section>
+</template>
+<script type="stylesheet" src="https://jenil.github.io/bulmaswatch/superhero/bulmaswatch.min.css"></script>
+
+<script>
+  import ViewContainer from './ViewContainer';
+  import NavBar from './NavBar';
+  import SideBar from './Sidebar';
+  import ControlBar from './ControlBar';
+
+  export default {
+    name: 'main-page',
+    components: {
+      ViewContainer,
+      NavBar,
+      SideBar,
+      ControlBar,
+    },
+    methods: {
+
+    },
+  };
+</script>
+
+<style>
+  body {
+    margin: 0;
+
+  }
+
+  #main-container {
+    background-color: rgb(126, 50, 202);
+    display: flex;
+    align-content: space-between;
+    flex-direction: column;
+
+  }
+</style>
