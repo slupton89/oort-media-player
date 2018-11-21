@@ -1,14 +1,20 @@
 <template>
   <section class="view-container">
-    <video-container></video-container>
+      <router-view></router-view>
   </section>
 </template>
 
 <script>
 import VideoContainer from './Views/VideoContainer';
+import MovieLibrary from './Views/MovieLibrary';
+import MusicLibrary from './Views/MusicLibrary';
+
 export default {
+  name: 'ViewContainer',
   components: {
     VideoContainer,
+    MovieLibrary,
+    MusicLibrary,
   },
 };
 </script>

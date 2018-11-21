@@ -1,23 +1,25 @@
 <template>
   <section id="main-container">
-    <nav-bar></nav-bar>
+    <navbar></navbar>
     <side-bar></side-bar>
-    <view-container>wot</view-container>
+    <!-- <file-manager></file-manager> -->
+    <router-view></router-view>
     <control-bar></control-bar>
   </section>
 </template>
 
 <script>
   import ViewContainer from './ViewContainer';
-  import NavBar from './NavBar';
+  import Navbar from './Navbar';
   import SideBar from './Sidebar';
   import ControlBar from './ControlBar';
+  // import FileManager from './FileManager';
 
   export default {
-    name: 'mainpage',
+    name: 'MainPage',
     components: {
       ViewContainer,
-      NavBar,
+      Navbar,
       SideBar,
       ControlBar,
     },

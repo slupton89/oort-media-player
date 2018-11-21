@@ -28,6 +28,7 @@ import { videoPlayer } from 'vue-video-player';
 // const vidUrl = URL.createObjectURL(vidObj);
 
 export default {
+  name: 'nowplaying',
   mounted() {
     // console.log('player: ', this)
   },

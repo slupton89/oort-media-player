@@ -7,8 +7,26 @@ export default new Router({
   routes: [
     {
       path: '/',
-      name: 'main-page',
       component: require('@/components/MainPage').default,
+      children: [
+        {
+          name: 'view-route',
+          path: '/',
+          component: require('@/components/ViewContainer').default,
+          children: [
+            {
+              path: 'movlib',
+              component: require('@/components/Views/MovieLibrary').default,
+            }, {
+              path: 'muslib',
+              component: require('@/components/Views/MusicLibrary').default,
+            }, {
+              path: 'playing',
+              component: require('@/components/Views/VideoContainer').default,
+            },
+          ],
+        },
+      ],
     },
     {
       path: '*',

@@ -3,6 +3,7 @@
     <aside class="menu">
       <section class="menu-container">
       <ul class="menu-list">
+        <router-link to="/movlib">
         <li class="is-danger">
           <a class="">
             <span style="
@@ -13,6 +14,8 @@
             Movies
           </a>
         </li>
+        </router-link>
+        <router-link to="/muslib">
         <li><a class="">
             <span style="
               font-size: 18px;
@@ -22,6 +25,8 @@
             Music
           </a>
         </li>
+        </router-link>
+        <router-link to="/movlib">
         <li>
           <a class="">
             <span style="
@@ -32,6 +37,8 @@
             Playlist
           </a>
         </li>
+        </router-link>
+        <router-link to="/movlib">
         <li>
           <a class="">
             <span style="
@@ -42,6 +49,8 @@
             Stream
           </a>
         </li>
+        </router-link>
+        <router-link to="/playing">
         <li>
           <a class="is-active is-dark">
             <span style="
@@ -52,48 +61,37 @@
             Now Playing
           </a>
         </li>
+        </router-link>
       </ul>
       </section>
       <p class="menu-label">
         Playlists
       </p>
       <section class="playlist-container">
-      <!-- <ul class="menu-list" :v-for="list in playlists"> -->
-      <ul class="menu-list">
-        <li><a>Rock</a></li>
-        <li><a>Party mix</a></li>
-        <li><a>Classic Rock Hits</a></li>
-        <li><a>Rock</a></li>
-        <li><a>Party mix</a></li>
-        <li><a>Classic Rock Hits</a></li>
-        <li><a>Rock</a></li>
-        <li><a>Party mix</a></li>
-        <li><a>Classic Rock Hits</a></li>
-        <li><a>Rock</a></li>
-        <li><a>Party mix</a></li>
-        <li><a>Classic Rock Hits</a></li>
-        <li><a>Rock</a></li>
-        <li><a>Party mix</a></li>
-        <li><a>Classic Rock Hits</a></li>
-        <li><a>Rock</a></li>
-        <li><a>Party mix</a></li>
-        <li><a>Classic Rock Hits</a></li>
-      </ul>
+        <sidebar-pl-container></sidebar-pl-container>
       </section>
     </aside>
   </section>
 </template>
 
 <script>
-export default {
+import SidebarPlContainer from './Views/SidebarPlContainer';
 
+export default {
+  name: 'Sidebar',
+  components: {
+    SidebarPlContainer,
+  },
+  data() {
+    return {
+    };
+  },
 };
 </script>
 
 <style scoped>
   #sidebar-container {
     box-sizing: border-box;
-    /* background-color: rgb(74, 74, 105); */
     position: fixed;
     height: 500px;
     width: 205px;
@@ -111,14 +109,6 @@ export default {
     color: white;
     height: 15px;
   }
-
-  .menu-container {
-
-  }
-
-  /* li {
-    border-bottom: 0.1px solid white;
-  } */
 
   .playlist-container {
     border: 3px solid #2A3E50;

@@ -18,12 +18,18 @@ function createWindow() {
    * Initial window options
    */
   mainWindow = new BrowserWindow({
+    title: 'MediaPlayer',
     height: 720,
     useContentSize: true,
     width: 1110,
+    frame: false,
+    resizable: false,
+    fullscreen: false,
+    fullscreenable: false,
+    titleBarStyle: 'customButtonsOnHover',
     webPreferences: {
       webSecurity: false,
-    }
+    },
   });
 
   mainWindow.loadURL(winURL);
