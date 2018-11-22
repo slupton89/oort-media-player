@@ -4,6 +4,7 @@
       <li v-for="(item, i) in customList"
           :key="i">
           <a>{{i}}</a>
+          <!-- TODO change to show on hover -->
           <button id="del-btn" @click="removePlaylist(i)" class="button is-rounded is-danger is-outlined">
             <i class="far fa-trash-alt"></i>
           </button>

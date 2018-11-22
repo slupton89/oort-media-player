@@ -1,10 +1,18 @@
 <template>
   <section id="fileman">
-    <h1 @click="this.getCount">Hello ~somewhat~ working fileman</h1>
+    <h1 @click="getCount()">Hello ~somewhat~ working fileman</h1>
     <ul>
-      <li v-for="(item, i) in files" :key="i">
-        <i :class="item[1]"></i>
-        <span>{{item[0]}}</span>
+      <li v-for="(folder, i) in folders" :key="i">
+        <span @click="readFolder(folder[2])">
+        <i :class="folder[1]"></i>
+        {{folder[0]}}
+        </span>
+      </li>
+      <li v-for="(file, i) in files" :key="i">
+        <span @click="openFile(file[2])">
+        <i :class="file[1]"></i>
+        {{file[0]}}
+        </span>
       </li>
     </ul>
   </section>
@@ -12,12 +20,14 @@
 
 <script>
 const fs = require('fs');
+const { shell } = require('electron');
 
 export default {
   name: 'fileman',
   data() {
     return {
       files: [],
+      folders: [],
     };
   },
   mounted() {
@@ -30,12 +40,13 @@ export default {
 
         files.forEach((file) => {
           fs.stat(file, (err, stats) => {
+            const filePath = `${path}/${file}/`;
             if (err) throw err;
 
             if (stats.isDirectory()) {
-              this.files.push([file, 'fa fa-folder-open']);
+              this.folders.push([file, 'fa fa-folder-open', filePath]);
             } else {
-              this.files.push([file, 'fa fa-file']);
+              this.files.push([file, 'fa fa-file', filePath]);
             }
           });
         });
@@ -43,8 +54,11 @@ export default {
         return this.files;
       });
     },
+    openFile(path) {
+      shell.openItem(path);
+    },
     getCount() {
-      console.log(this.files);
+      console.log(this.folders, this.files);
     },
   },
 };
