@@ -13,10 +13,10 @@ export default {
 <style>
 #controlbar-container {
     box-sizing: border-box;
-    /* background-color: rgb(255, 50, 0); */
+    background-color: rgb(255, 50, 0);
     position: fixed;
-    height: 135px;
-    left: 5px;
+    height: 95px;
+    left: 216px;
     right: 5px;
     bottom: 5px;
    }

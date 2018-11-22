@@ -26,6 +26,7 @@ export default {
     width: 888.89px;
     height: 500px;
     position: fixed;
+    z-index: 0;
     top: 75px;
     right: 5px;
   }

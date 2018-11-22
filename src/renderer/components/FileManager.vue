@@ -1,10 +1,10 @@
 <template>
   <section id="fileman">
-    <h1 @click="this.getCount">Hello</h1>
+    <h1 @click="this.getCount">Hello ~somewhat~ working fileman</h1>
     <ul>
       <li v-for="(item, i) in files" :key="i">
-        <i :class="item[0].style"></i>
-        <span>{{Object.keys(item)[0]}}</span>
+        <i :class="item[1]"></i>
+        <span>{{item[0]}}</span>
       </li>
     </ul>
   </section>
@@ -33,15 +33,9 @@ export default {
             if (err) throw err;
 
             if (stats.isDirectory()) {
-              this.files.push({
-                ...file, style: 'fa fa-folder-open',
-              });
+              this.files.push([file, 'fa fa-folder-open']);
             } else {
-              this.files.push({
-                [file]: {
-                  style: 'fa fa-file',
-                },
-              });
+              this.files.push([file, 'fa fa-file']);
             }
           });
         });
@@ -57,13 +51,5 @@ export default {
 </script>
 
 <style>
-  #fileman {
-    box-sizing: border-box;
-    /* background-color: rgb(74, 74, 105); */
-    position: fixed;
-    height: 500px;
-    width: 205px;
-    left: 5px;
-    top: 75px;
-  }
+
 </style>

@@ -19,7 +19,7 @@ function createWindow() {
    */
   mainWindow = new BrowserWindow({
     title: 'MediaPlayer',
-    height: 720,
+    height: 680,
     useContentSize: true,
     width: 1110,
     frame: false,

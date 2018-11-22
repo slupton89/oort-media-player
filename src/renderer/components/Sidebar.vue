@@ -3,8 +3,8 @@
     <aside class="menu">
       <section class="menu-container">
       <ul class="menu-list">
-        <router-link to="/movlib">
-        <li class="is-danger">
+        <router-link class='r-link' to="/movlib">
+        <li style="height: 30px;" class="">
           <a class="">
             <span style="
               font-size: 18px;
@@ -15,7 +15,7 @@
           </a>
         </li>
         </router-link>
-        <router-link to="/muslib">
+        <router-link class='r-link' to="/muslib">
         <li><a class="">
             <span style="
               font-size: 18px;
@@ -26,7 +26,7 @@
           </a>
         </li>
         </router-link>
-        <router-link to="/movlib">
+        <router-link class='r-link' to="/movlib">
         <li>
           <a class="">
             <span style="
@@ -38,7 +38,7 @@
           </a>
         </li>
         </router-link>
-        <router-link to="/movlib">
+        <router-link class='r-link' to="/movlib">
         <li>
           <a class="">
             <span style="
@@ -50,7 +50,7 @@
           </a>
         </li>
         </router-link>
-        <router-link to="/playing">
+        <router-link class='r-link' to="/playing">
         <li>
           <a class="is-active is-dark">
             <span style="
@@ -66,6 +66,10 @@
       </section>
       <p class="menu-label">
         Playlists
+        <input-modal></input-modal>
+        <button id="add-btn" @click="setIsActive()" class="button is-rounded is-info is-outlined">
+          <i id="add-icon" class="fas fa-plus"></i>
+        </button>
       </p>
       <section class="playlist-container">
         <sidebar-pl-container></sidebar-pl-container>
@@ -75,16 +79,22 @@
 </template>
 
 <script>
+import { mapActions } from 'vuex';
 import SidebarPlContainer from './Views/SidebarPlContainer';
+import InputModal from './Views/InputModal';
 
 export default {
   name: 'Sidebar',
   components: {
     SidebarPlContainer,
+    InputModal,
   },
   data() {
     return {
     };
+  },
+  methods: {
+    ...mapActions('Playlist', ['createPlaylist', 'setIsActive']),
   },
 };
 </script>
@@ -104,6 +114,24 @@ export default {
     border-right: 0.1px solid #2A3E50;
   }
 
+  #add-btn {
+    position: relative;
+    bottom: 20px;
+    left: 165px;
+    padding: 0;
+    width: 20px;
+    height: 20px;
+  }
+
+  #add-icon {
+    font-size: 10px;
+  }
+
+  #add-btn:hover > #add-icon {
+    font-size: 14px;
+  }
+
+
   .menu-label {
     margin-left: 5px;
     color: white;
@@ -111,9 +139,12 @@ export default {
   }
 
   .playlist-container {
+    position: relative;
     border: 3px solid #2A3E50;
     border-radius: 5px;
-    height: 270px;
+    height: 300px;
+    bottom: 0px;
     overflow: scroll;
   }
+
 </style>

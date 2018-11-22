@@ -1,10 +1,10 @@
 <template>
   <section id="main-container">
     <navbar></navbar>
-    <side-bar></side-bar>
     <!-- <file-manager></file-manager> -->
     <router-view></router-view>
     <control-bar></control-bar>
+    <side-bar></side-bar>
   </section>
 </template>
 
@@ -13,7 +13,6 @@
   import Navbar from './Navbar';
   import SideBar from './Sidebar';
   import ControlBar from './ControlBar';
-  // import FileManager from './FileManager';
 
   export default {
     name: 'MainPage',

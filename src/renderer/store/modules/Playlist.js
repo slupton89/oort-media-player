@@ -11,50 +11,58 @@ const state = {
       'Song 1', 'Song 2', 'Song 3', 'Song 4', 'Song 5',
     ],
   },
+  isActive: false,
 };
 
 const mutations = {
-  setPlaylist(state, list) {
-    state.customList = Object.assign({}, state.customList, list);
+  setPlaylist(state, newList) {
+    state.customList = Object.assign({}, state.customList, newList);
+    return state;
   },
   delPlaylist(state, name) {
-    console.log('delPlaylist, name: ', name, 'State: ', state.customList);
     delete state.customList[name];
+    state.customList = Object.assign({}, state.customList);
+    return state;
   },
-  updPlaylist(state, oldList, list) {
-    state.customList[oldList] = list;
+  updPlaylist(state, oldList, newList) {
+    state.customList[oldList] = newList;
+    return state;
+  },
+  setActive(state) {
+    state.isActive = true;
+    return state;
+  },
+  unsetActive(state) {
+    state.isActive = false;
+    return state;
   },
 };
 
 // TODO remove
 const actions = {
-  createPlaylist(context, name, list) {
-    if (name && list) {
+  createPlaylist(context, name, playlist) {
+    console.log(name);
+    if (name) {
       const newList = {
-        name: list,
+        [name]: playlist,
       };
       context.commit('setPlaylist', newList);
       return newList;
     }
     const newList = {
-      'Playlist 1': [
-        'Song 1', 'Song 2', 'Song 3', 'Song 4', 'Song 5',
-      ],
-      'Playlist 2': [
-        'Song 1', 'Song 2', 'Song 3', 'Song 4', 'Song 5',
-      ],
-      'Playlist 3': [
+      'New Playlist': [
         'Song 1', 'Song 2', 'Song 3', 'Song 4', 'Song 5',
       ],
     };
     // TODO save playlist to json
     context.commit('setPlaylist', newList);
+    console.log('newlist', newList);
     return newList;
   },
   updatePlaylist(context, name, list) {
-    if (name && list) {
+    if (name) {
       const newList = {
-        name: list,
+        [name]: [],
       };
       context.commit('updPlaylist', list, newList);
       return newList;
@@ -62,9 +70,14 @@ const actions = {
     return null;
   },
   removePlaylist(context, name) {
-    console.log('removePlaylist, name: ', name);
     context.commit('delPlaylist', name);
     return state.customList;
+  },
+  setIsActive(context) {
+    context.commit('setActive');
+  },
+  unsetIsActive(context) {
+    context.commit('unsetActive');
   },
 };
 
@@ -73,16 +86,6 @@ const getters = {
     return state.customList;
   },
 };
-
-// const playlist = {
-//   namespaced: true,
-//   state,
-//   mutations,
-//   actions,
-//   getters,
-// };
-
-// export default playlist;
 
 export default {
   namespaced: true,

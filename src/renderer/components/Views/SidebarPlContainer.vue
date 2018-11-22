@@ -4,7 +4,7 @@
       <li v-for="(item, i) in customList"
           :key="i">
           <a>{{i}}</a>
-          <button id="del-btn" @click.prevent="removePlaylist(i)" class="button is-rounded is-danger is-outlined">
+          <button id="del-btn" @click="removePlaylist(i)" class="button is-rounded is-danger is-outlined">
             <i class="far fa-trash-alt"></i>
           </button>
       </li>
@@ -13,15 +13,16 @@
 </template>
 
 <script>
-import { mapState, mapActions, mapGetters } from 'vuex';
+import { mapState, mapActions } from 'vuex';
 
 export default {
-  updated() {
-    this.getPlaylists();
-  },
   computed: mapState('Playlist', ['customList']),
-  methods: mapActions('Playlist', ['removePlaylist']),
-  getters: mapGetters('Playlist', ['getPlaylists']),
+  methods: {
+    ...mapActions('Playlist', ['removePlaylist']),
+    removeEle() {
+      this.remove();
+    },
+  },
 };
 </script>
 
@@ -34,8 +35,13 @@ export default {
     width: 25px;
     height: 25px;
   }
+
   i {
     font-size: 13px;
+  }
+
+  li {
+    height: 40px;
   }
 </style>
 
