@@ -39,7 +39,7 @@ export default {
     height: 35px;
     background-color: transparent;
     position: fixed;
-    top: 340px;
+    top: 330px;
     left: 5px;
   }
 

@@ -109,6 +109,10 @@ export default {
     top: 75px;
   }
 
+  a.r-link {
+    height: 50px;
+  }
+
   a:hover {
     border-left: 0.1px solid #2A3E50;
     border-right: 0.1px solid #2A3E50;
@@ -117,14 +121,14 @@ export default {
   #add-btn {
     position: relative;
     bottom: 20px;
-    left: 165px;
+    left: 164px;
     padding: 0;
-    width: 20px;
-    height: 20px;
+    width: 25px;
+    height: 25px;
   }
 
   #add-icon {
-    font-size: 10px;
+    font-size: 14px;
   }
 
   #add-btn:hover > #add-icon {
@@ -135,7 +139,7 @@ export default {
   .menu-label {
     margin-left: 5px;
     color: white;
-    height: 15px;
+    height: 10px;
   }
 
   .playlist-container {
@@ -143,7 +147,7 @@ export default {
     border: 3px solid #2A3E50;
     border-radius: 5px;
     height: 300px;
-    bottom: 0px;
+    bottom: -10px;
     overflow: scroll;
   }
 

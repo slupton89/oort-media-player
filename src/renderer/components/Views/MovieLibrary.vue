@@ -1,6 +1,6 @@
 <template>
   <section class="movie-library-container">
-    <section id="mov-container">
+    <section id="mov-container" class="">
 
     </section>
     <file-manager></file-manager>

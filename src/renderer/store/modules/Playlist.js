@@ -1,4 +1,3 @@
-
 const state = {
   customList: {
     'Playlist 1': [
@@ -41,7 +40,6 @@ const mutations = {
 // TODO remove
 const actions = {
   createPlaylist(context, name, playlist) {
-    console.log(name);
     if (name) {
       const newList = {
         [name]: playlist,
@@ -56,7 +54,6 @@ const actions = {
     };
     // TODO save playlist to json
     context.commit('setPlaylist', newList);
-    console.log('newlist', newList);
     return newList;
   },
   updatePlaylist(context, name, list) {
@@ -67,11 +64,11 @@ const actions = {
       context.commit('updPlaylist', list, newList);
       return newList;
     }
+    // if name and list
     return null;
   },
   removePlaylist(context, name) {
     context.commit('delPlaylist', name);
-    return state.customList;
   },
   setIsActive(context) {
     context.commit('setActive');
