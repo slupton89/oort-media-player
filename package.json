@@ -53,9 +53,10 @@
     }
   },
   "dependencies": {
-    "font-awesome": "^4.7.0",
     "electron": "^2.0.4",
+    "font-awesome": "^4.7.0",
     "video.js": "^7.3.0",
+    "videojs-hotkeys": "^0.2.22",
     "vue": "^2.5.16",
     "vue-electron": "^1.0.6",
     "vue-router": "^3.0.1",

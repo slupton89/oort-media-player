@@ -25,7 +25,7 @@ function createWindow() {
     frame: false,
     resizable: false,
     fullscreen: false,
-    fullscreenable: false,
+    fullscreenable: true,
     titleBarStyle: 'customButtonsOnHover',
     webPreferences: {
       webSecurity: false,
@@ -53,6 +53,7 @@ app.on('activate', () => {
   }
 });
 
+
 /**
  * Auto Updater
  *
@@ -72,3 +73,4 @@ app.on('ready', () => {
   if (process.env.NODE_ENV === 'production') autoUpdater.checkForUpdates()
 })
  */
+

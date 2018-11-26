@@ -1,7 +1,6 @@
 <template>
   <section id="fileman">
-    <h1 @click="getCount()">Hello ~somewhat~ working fileman</h1>
-    <ul>
+    <ul id="file-list">
       <li v-for="(folder, i) in folders" :key="i">
         <span @click="readFolder(folder[2])">
         <i :class="folder[1]"></i>
@@ -36,5 +35,13 @@ export default {
 </script>
 
 <style>
+  #fileman {
+    padding: 5px;
+    position: relative;
+    top: -5px;
+  }
 
+  #file-list {
+    background-color: #1C2A38;
+  }
 </style>

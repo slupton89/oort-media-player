@@ -8602,7 +8602,7 @@ videojs-font@3.1.0:
   resolved "https://registry.yarnpkg.com/videojs-font/-/videojs-font-3.1.0.tgz#ac33be9b517fe19299f61cccd2b3c7d75a1c6960"
   integrity sha512-rxB68SVgbHD+kSwoNWNCHicKJuR2ga3bGfvGxmB+8fupsiLbnyCwTBVtrZUq4bZnD64mrKP1DxHiutxwrs59pQ==
 
-videojs-hotkeys@^0.2.20:
+videojs-hotkeys@^0.2.20, videojs-hotkeys@^0.2.22:
   version "0.2.22"
   resolved "https://registry.yarnpkg.com/videojs-hotkeys/-/videojs-hotkeys-0.2.22.tgz#76f917b1a70e7bf9da5f7f8cd33d5a032c0284be"
   integrity sha512-sl/D6blI+SY40uD9OJBBUZB4PzV5g4xpfV2aPqzYgYiO1GEdXFAZKXWj80Hz2VEmJ8tXj5ToIbVq+t4v3ckvNw==

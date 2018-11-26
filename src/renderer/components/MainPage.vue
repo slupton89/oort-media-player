@@ -1,9 +1,7 @@
 <template>
   <section id="main-container">
+    <router-view id="router-view"></router-view>
     <navbar></navbar>
-    <!-- <file-manager></file-manager> -->
-    <router-view></router-view>
-    <control-bar></control-bar>
     <side-bar></side-bar>
   </section>
 </template>
@@ -12,7 +10,6 @@
   import ViewContainer from './ViewContainer';
   import Navbar from './Navbar';
   import SideBar from './Sidebar';
-  import ControlBar from './ControlBar';
 
   export default {
     name: 'MainPage',
@@ -20,7 +17,6 @@
       ViewContainer,
       Navbar,
       SideBar,
-      ControlBar,
     },
     methods: {
 
@@ -34,6 +30,10 @@
   }
 
   #main-container {
-    background-color: rgb(126, 50, 202);
+    background-color: #1C2A38;;
+  }
+
+  #router-view {
+    z-index: 0;
   }
 </style>

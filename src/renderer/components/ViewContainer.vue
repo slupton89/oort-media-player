@@ -22,13 +22,14 @@ export default {
 <style>
   .view-container {
     box-sizing: border-box;
-    background-color: rgb(88, 47, 47);
+    background-color: #2A3E50;
     width: 888.89px;
     height: 500px;
     position: fixed;
     z-index: 0;
     top: 75px;
     right: 5px;
+    overflow: scroll;
   }
 
 </style>

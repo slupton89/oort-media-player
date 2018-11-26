@@ -1,47 +1,51 @@
-<template>
-  <section id="controlbar-container">
-    <div id="video-controls">
-    <button type="button" id="play-pause" class="button is-success is-outlined">
-      <i id="play-pause-icon" class="fas fa-play"></i>
-    </button>
-    <progress id="seek-bar" value="0" class="progress is-link"></progress>
-    <button type="button" id="mute" class="button is-danger is-outlined">
-      <!-- TODO find better vol icons -->
-      <i id="mute-icon" class="fas fa-volume-mute"></i>
-    </button>
-    <progress id="volume-bar" max="100" value="50" class="progress is-link"></progress>
-    <button type="button" id="full-screen" class="button">
-      <i id="play-pause-icon" class="fas fa-expand"></i>
-    </button>
-  </div>
-  </section>
-</template>
 
 <script>
-export default {
-  name: 'ControlBar',
-};
+// import { mapState, mapActions } from 'vuex';
+// import VolumeModal from './Views/VolumeModal';
+// export default {
+//   name: 'ControlBar',
+//   data() {
+//     return {
+//       seekValue: this.curPlayTime,
+//     };
+//   },
+//   components: {
+//     VolumeModal,
+//   },
+//   computed: mapState('Video', ['duration', 'curPlayTime', 'volume', 'isMuted', 'isPlaying']),
+//   methods: mapActions('Video', ['mute', 'playPause', 'seekPlay', 'seekPause', 'curTime']),
+// };
 </script>
 
 <style>
-  #controlbar-container {
+  /* #controlbar-container {
     box-sizing: border-box;
-    /* background-color: rgb(255, 50, 0); */
+    background-color: #1A2431;
     position: fixed;
     height: 95px;
     left: 216px;
     right: 5px;
     bottom: 5px;
-   }
+  }
+
+  #full-screen-btn {
+    position: fixed;
+    width: 40px;
+    height: 40px;
+    border-radius: 50px;
+    border: transparent;
+    right: 210px;
+    bottom: 15px;
+  }
 
   #mute {
     border-radius: 50px;
     width: 30px;
     height: 30px;
     display: block;
-    position: relative;
-    left: 835px;
-    bottom: 35px;
+    position: fixed;
+    right: 25px;
+    bottom: 22.5px;
    }
 
    #mute-icon {
@@ -58,6 +62,9 @@ export default {
   }
 
   #play-pause {
+    color: rgb(92, 184, 92);
+    background-color: transparent;
+    border: 1px solid rgb(92, 184, 92);
     display: block;
     width: 50px;
     margin-left: auto;
@@ -66,10 +73,23 @@ export default {
     top: 35px;
   }
 
-  #play-pause-icon {
+  #play-pause.is-outlined:hover, #play-pause:focus {
+    color: rgb(92, 184, 92);
+    background-color: transparent;
+    border: 1px solid rgb(92, 184, 92);
+  }
+
+  #play-icon {
     font-size: 30px;
     position: relative;
     left: 2.5px;
+  }
+
+  #pause-icon {
+    font-size: 30px;
+    position: relative;
+    top: 1px;
+    right: .5px;
   }
 
   #seek-bar {
@@ -81,9 +101,26 @@ export default {
     bottom: 35px;
   }
 
-  #volume-bar {
-    height: 10px;
-    width: 200px;
+  #seek-slider {
+    height: 0px;
+    width: 75%;
+    margin-left: auto;
+    margin-right: auto;
+    position: relative;
+    left: 111px;
+    bottom: 82.5px;
   }
+
+  :focus {
+    outline: transparent;
+  }
+
+  #volume-bar {
+    position: absolute;
+    bottom: 3px;
+    right: 60px;
+    height: 8px;
+    width: 130px;
+  } */
 
 </style>

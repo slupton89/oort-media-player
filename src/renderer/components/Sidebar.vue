@@ -38,7 +38,7 @@
           </a>
         </li>
         </router-link>
-        <router-link class='r-link' to="/movlib">
+        <router-link class='r-link' to="/video">
         <li>
           <a class="">
             <span style="
@@ -102,8 +102,9 @@ export default {
 <style scoped>
   #sidebar-container {
     box-sizing: border-box;
+    background-color: #1A2431;
     position: fixed;
-    height: 500px;
+    height: 595px;
     width: 205px;
     left: 5px;
     top: 75px;
@@ -147,7 +148,7 @@ export default {
     border: 3px solid #2A3E50;
     border-radius: 5px;
     height: 300px;
-    bottom: -10px;
+    bottom: -15px;
     overflow: scroll;
   }
 
