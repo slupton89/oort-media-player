@@ -38,7 +38,7 @@
           </a>
         </li>
         </router-link>
-        <router-link class='r-link' to="/video">
+        <router-link class='r-link' to="/testvideo">
         <li>
           <a class="">
             <span style="
@@ -136,6 +136,8 @@ export default {
     font-size: 14px;
   }
 
+  .menu-container {
+  }
 
   .menu-label {
     margin-left: 5px;

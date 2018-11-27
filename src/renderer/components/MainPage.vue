@@ -18,9 +18,6 @@
       Navbar,
       SideBar,
     },
-    methods: {
-
-    },
   };
 </script>
 

@@ -1,8 +1,8 @@
 <template>
   <section id="movie-container">
     <div id="movie-card" class="card" v-for="movie in movieLibrary" :key="movie[0] + Math.random() * 100">
-      <router-link class='r-link' to="/playing" @click="loadVideo(movie)">
-      <img class="card-img-top" :src="movie[1]">
+      <router-link class='r-link' to="/playing">
+      <img class="card-img-top" :src="movie[1]" @click="loadVideo(movie)">
       </router-link>
     </div>
   </section>
@@ -37,9 +37,8 @@ export default {
     display: grid;
     grid-template-columns: 18% 18% 18% 18% 18%;
     grid-template-rows: repeat(1000, 45%);
-    grid-template-areas:inherit;
     grid-gap: 2%;
-    grid-row-gap: 20px;
+    grid-row-gap: 0px;
     position: absolute;
     top: 5px;
     left: 26px;

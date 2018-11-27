@@ -1,6 +1,6 @@
 <template>
   <section id="navbar-container" class="draggable">
-    <nav class="navbar draggable" role="navigation" aria-label="main navigation">
+    <nav class="navbar draggable is-dark" role="navigation" aria-label="main navigation">
       <div class="navbar-brand">
         <a class="navbar-item">
           Media player

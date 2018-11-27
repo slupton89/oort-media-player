@@ -1,6 +1,6 @@
 const state = {
   player: {},
-  videoSrc: 'http://vjs.zencdn.net/v/oceans.mp4',
+  videoSrc: '',
   poster: '',
   duration: 0,
   curPlayTime: 0,
@@ -12,6 +12,7 @@ const mutations = {
 
   // },
   setVideo(state, video) {
+    console.log(video);
     state = Object.assign(state, {
       videoSrc: `file://${video[2]}`,
       poster: video[1],

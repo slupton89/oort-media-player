@@ -1,28 +1,34 @@
 import Vue from 'vue';
 import Router from 'vue-router';
 
+import MainPage from '../components/MainPage';
+import ViewContainer from '../components/ViewContainer';
+import VideoContainer from '../components/Views/VideoContainer';
+import MovieLibrary from '../components/Views/MovieLibrary';
+import MusicLibrary from '../components/Views/MusicLibrary';
+
 Vue.use(Router);
 
 export default new Router({
   routes: [
     {
       path: '/',
-      component: require('@/components/MainPage').default,
+      component: MainPage,
       children: [
         {
           name: 'view-route',
           path: '/',
-          component: require('@/components/ViewContainer').default,
+          component: ViewContainer,
           children: [
             {
               path: 'movlib',
-              component: require('@/components/Views/MovieLibrary').default,
+              component: MovieLibrary,
             }, {
               path: 'muslib',
-              component: require('@/components/Views/MusicLibrary').default,
+              component: MusicLibrary,
             }, {
               path: 'playing',
-              component: require('@/components/Views/VideoContainer').default,
+              component: VideoContainer,
             },
           ],
         },
