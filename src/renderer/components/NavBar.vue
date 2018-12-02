@@ -45,10 +45,14 @@
       <div id="fileman-container">
         <file-manager></file-manager>
       </div>
-      <button id="add-btn" v-if="curSel === 0" class="button is-success" @click="changeMovLocation(), showAddLibrary()">Set
-        Movie Location</button>
-      <button id="add-btn" v-else-if="curSel === 1" class="button is-success" @click="changeMusLocation(), showAddLibrary()">Set
-        Music Location</button>
+      <button id="add-btn" v-if="curSel === 0" class="button is-success"
+        @click="changeMovLocation(), showAddLibrary(), scanFiles()">Set
+        Movie Location
+      </button>
+      <button id="add-btn" v-else-if="curSel === 1" class="button is-success"
+        @click="changeMusLocation(), showAddLibrary(), scanFiles()">Set
+        Music Location
+      </button>
     </div>
   </section>
 </template>
@@ -68,9 +72,8 @@ export default {
       curSel: 0,
     };
   },
-  // computed: mapState('Video', ['nowPlaying']),
   methods: {
-    ...mapActions('Library', ['changeMovLocation', 'changeMusLocation']),
+    ...mapActions('Library', ['changeMovLocation', 'changeMusLocation', 'scanFiles']),
     showAddLibrary() {
       if (!this.libModalIsOpen) {
         this.libModalIsOpen = true;

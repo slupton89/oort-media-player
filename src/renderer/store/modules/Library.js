@@ -1,57 +1,15 @@
+
 const fs = require('fs');
+const { TMDB_API_URL, POSTER_URL } = require('../../config');
 
 const state = {
   folders: [],
   curDir: '',
   movieLibrary: [
-    ['Ready', 'https://m.media-amazon.com/images/M/MV5BY2JiYTNmZTctYTQ1OC00YjU4LWEwMjYtZjkwY2Y5MDI0OTU3XkEyXkFqcGdeQXVyNTI4MzE4MDU@._V1_SX300.jpg', '/Users/shanelupton/Documents/Vue/project/media-player/src/renderer/components/Views/ready.mp4'],
-    ['Aquaman', 'https://m.media-amazon.com/images/M/MV5BMTA1NDM2ODUxOTNeQTJeQWpwZ15BbWU4MDgxOTEyMDYz._V1_SX300.jpg', '/Users/shanelupton/Downloads/aquaman-trailer-3_h1080p.mov'],
-    ['Ready', 'https://m.media-amazon.com/images/M/MV5BY2JiYTNmZTctYTQ1OC00YjU4LWEwMjYtZjkwY2Y5MDI0OTU3XkEyXkFqcGdeQXVyNTI4MzE4MDU@._V1_SX300.jpg', '/Users/shanelupton/Documents/Vue/project/media-player/src/renderer/components/Views/ready.mp4'],
-    ['Ready', 'https://m.media-amazon.com/images/M/MV5BY2JiYTNmZTctYTQ1OC00YjU4LWEwMjYtZjkwY2Y5MDI0OTU3XkEyXkFqcGdeQXVyNTI4MzE4MDU@._V1_SX300.jpg', '/Users/shanelupton/Documents/Vue/project/media-player/src/renderer/components/Views/ready.mp4'],
-    ['Ready', 'https://m.media-amazon.com/images/M/MV5BY2JiYTNmZTctYTQ1OC00YjU4LWEwMjYtZjkwY2Y5MDI0OTU3XkEyXkFqcGdeQXVyNTI4MzE4MDU@._V1_SX300.jpg', '/Users/shanelupton/Documents/Vue/project/media-player/src/renderer/components/Views/ready.mp4'],
-    ['Ready', 'https://m.media-amazon.com/images/M/MV5BY2JiYTNmZTctYTQ1OC00YjU4LWEwMjYtZjkwY2Y5MDI0OTU3XkEyXkFqcGdeQXVyNTI4MzE4MDU@._V1_SX300.jpg', '/Users/shanelupton/Documents/Vue/project/media-player/src/renderer/components/Views/ready.mp4'],
-    ['Ready', 'https://m.media-amazon.com/images/M/MV5BY2JiYTNmZTctYTQ1OC00YjU4LWEwMjYtZjkwY2Y5MDI0OTU3XkEyXkFqcGdeQXVyNTI4MzE4MDU@._V1_SX300.jpg', '/Users/shanelupton/Documents/Vue/project/media-player/src/renderer/components/Views/ready.mp4'],
-    ['Ready', 'https://m.media-amazon.com/images/M/MV5BY2JiYTNmZTctYTQ1OC00YjU4LWEwMjYtZjkwY2Y5MDI0OTU3XkEyXkFqcGdeQXVyNTI4MzE4MDU@._V1_SX300.jpg', '/Users/shanelupton/Documents/Vue/project/media-player/src/renderer/components/Views/ready.mp4'],
-    ['Ready', 'https://m.media-amazon.com/images/M/MV5BY2JiYTNmZTctYTQ1OC00YjU4LWEwMjYtZjkwY2Y5MDI0OTU3XkEyXkFqcGdeQXVyNTI4MzE4MDU@._V1_SX300.jpg', '/Users/shanelupton/Documents/Vue/project/media-player/src/renderer/components/Views/ready.mp4'],
-    ['Ready', 'https://m.media-amazon.com/images/M/MV5BY2JiYTNmZTctYTQ1OC00YjU4LWEwMjYtZjkwY2Y5MDI0OTU3XkEyXkFqcGdeQXVyNTI4MzE4MDU@._V1_SX300.jpg', '/Users/shanelupton/Documents/Vue/project/media-player/src/renderer/components/Views/ready.mp4'],
-    ['Ready', 'https://m.media-amazon.com/images/M/MV5BY2JiYTNmZTctYTQ1OC00YjU4LWEwMjYtZjkwY2Y5MDI0OTU3XkEyXkFqcGdeQXVyNTI4MzE4MDU@._V1_SX300.jpg', '/Users/shanelupton/Documents/Vue/project/media-player/src/renderer/components/Views/ready.mp4'],
-    ['Ready', 'https://m.media-amazon.com/images/M/MV5BY2JiYTNmZTctYTQ1OC00YjU4LWEwMjYtZjkwY2Y5MDI0OTU3XkEyXkFqcGdeQXVyNTI4MzE4MDU@._V1_SX300.jpg', '/Users/shanelupton/Documents/Vue/project/media-player/src/renderer/components/Views/ready.mp4'],
-    ['Ready', 'https://m.media-amazon.com/images/M/MV5BY2JiYTNmZTctYTQ1OC00YjU4LWEwMjYtZjkwY2Y5MDI0OTU3XkEyXkFqcGdeQXVyNTI4MzE4MDU@._V1_SX300.jpg', '/Users/shanelupton/Documents/Vue/project/media-player/src/renderer/components/Views/ready.mp4'],
-    ['Ready', 'https://m.media-amazon.com/images/M/MV5BY2JiYTNmZTctYTQ1OC00YjU4LWEwMjYtZjkwY2Y5MDI0OTU3XkEyXkFqcGdeQXVyNTI4MzE4MDU@._V1_SX300.jpg', '/Users/shanelupton/Documents/Vue/project/media-player/src/renderer/components/Views/ready.mp4'],
-    ['Ready', 'https://m.media-amazon.com/images/M/MV5BY2JiYTNmZTctYTQ1OC00YjU4LWEwMjYtZjkwY2Y5MDI0OTU3XkEyXkFqcGdeQXVyNTI4MzE4MDU@._V1_SX300.jpg', '/Users/shanelupton/Documents/Vue/project/media-player/src/renderer/components/Views/ready.mp4'],
-    ['Ready', 'https://m.media-amazon.com/images/M/MV5BY2JiYTNmZTctYTQ1OC00YjU4LWEwMjYtZjkwY2Y5MDI0OTU3XkEyXkFqcGdeQXVyNTI4MzE4MDU@._V1_SX300.jpg', '/Users/shanelupton/Documents/Vue/project/media-player/src/renderer/components/Views/ready.mp4'],
-    ['Ready', 'https://m.media-amazon.com/images/M/MV5BY2JiYTNmZTctYTQ1OC00YjU4LWEwMjYtZjkwY2Y5MDI0OTU3XkEyXkFqcGdeQXVyNTI4MzE4MDU@._V1_SX300.jpg', '/Users/shanelupton/Documents/Vue/project/media-player/src/renderer/components/Views/ready.mp4'],
-    ['Ready', 'https://m.media-amazon.com/images/M/MV5BY2JiYTNmZTctYTQ1OC00YjU4LWEwMjYtZjkwY2Y5MDI0OTU3XkEyXkFqcGdeQXVyNTI4MzE4MDU@._V1_SX300.jpg', '/Users/shanelupton/Documents/Vue/project/media-player/src/renderer/components/Views/ready.mp4'],
-    ['Ready', 'https://m.media-amazon.com/images/M/MV5BY2JiYTNmZTctYTQ1OC00YjU4LWEwMjYtZjkwY2Y5MDI0OTU3XkEyXkFqcGdeQXVyNTI4MzE4MDU@._V1_SX300.jpg', '/Users/shanelupton/Documents/Vue/project/media-player/src/renderer/components/Views/ready.mp4'],
-    ['Ready', 'https://m.media-amazon.com/images/M/MV5BY2JiYTNmZTctYTQ1OC00YjU4LWEwMjYtZjkwY2Y5MDI0OTU3XkEyXkFqcGdeQXVyNTI4MzE4MDU@._V1_SX300.jpg', '/Users/shanelupton/Documents/Vue/project/media-player/src/renderer/components/Views/ready.mp4'],
-    ['Ready', 'https://m.media-amazon.com/images/M/MV5BY2JiYTNmZTctYTQ1OC00YjU4LWEwMjYtZjkwY2Y5MDI0OTU3XkEyXkFqcGdeQXVyNTI4MzE4MDU@._V1_SX300.jpg', '/Users/shanelupton/Documents/Vue/project/media-player/src/renderer/components/Views/ready.mp4'],
-    ['Ready', 'https://m.media-amazon.com/images/M/MV5BY2JiYTNmZTctYTQ1OC00YjU4LWEwMjYtZjkwY2Y5MDI0OTU3XkEyXkFqcGdeQXVyNTI4MzE4MDU@._V1_SX300.jpg', '/Users/shanelupton/Documents/Vue/project/media-player/src/renderer/components/Views/ready.mp4'],
-    ['Ready', 'https://m.media-amazon.com/images/M/MV5BY2JiYTNmZTctYTQ1OC00YjU4LWEwMjYtZjkwY2Y5MDI0OTU3XkEyXkFqcGdeQXVyNTI4MzE4MDU@._V1_SX300.jpg', '/Users/shanelupton/Documents/Vue/project/media-player/src/renderer/components/Views/ready.mp4'],
-    ['Ready', 'https://m.media-amazon.com/images/M/MV5BY2JiYTNmZTctYTQ1OC00YjU4LWEwMjYtZjkwY2Y5MDI0OTU3XkEyXkFqcGdeQXVyNTI4MzE4MDU@._V1_SX300.jpg', '/Users/shanelupton/Documents/Vue/project/media-player/src/renderer/components/Views/ready.mp4'],
-    ['Ready', 'https://m.media-amazon.com/images/M/MV5BY2JiYTNmZTctYTQ1OC00YjU4LWEwMjYtZjkwY2Y5MDI0OTU3XkEyXkFqcGdeQXVyNTI4MzE4MDU@._V1_SX300.jpg', '/Users/shanelupton/Documents/Vue/project/media-player/src/renderer/components/Views/ready.mp4'],
-    ['Ready', 'https://m.media-amazon.com/images/M/MV5BY2JiYTNmZTctYTQ1OC00YjU4LWEwMjYtZjkwY2Y5MDI0OTU3XkEyXkFqcGdeQXVyNTI4MzE4MDU@._V1_SX300.jpg', '/Users/shanelupton/Documents/Vue/project/media-player/src/renderer/components/Views/ready.mp4'],
-    ['Ready', 'https://m.media-amazon.com/images/M/MV5BY2JiYTNmZTctYTQ1OC00YjU4LWEwMjYtZjkwY2Y5MDI0OTU3XkEyXkFqcGdeQXVyNTI4MzE4MDU@._V1_SX300.jpg', '/Users/shanelupton/Documents/Vue/project/media-player/src/renderer/components/Views/ready.mp4'],
-    ['Ready', 'https://m.media-amazon.com/images/M/MV5BY2JiYTNmZTctYTQ1OC00YjU4LWEwMjYtZjkwY2Y5MDI0OTU3XkEyXkFqcGdeQXVyNTI4MzE4MDU@._V1_SX300.jpg', '/Users/shanelupton/Documents/Vue/project/media-player/src/renderer/components/Views/ready.mp4'],
-    ['Ready', 'https://m.media-amazon.com/images/M/MV5BY2JiYTNmZTctYTQ1OC00YjU4LWEwMjYtZjkwY2Y5MDI0OTU3XkEyXkFqcGdeQXVyNTI4MzE4MDU@._V1_SX300.jpg', '/Users/shanelupton/Documents/Vue/project/media-player/src/renderer/components/Views/ready.mp4'],
-    ['Ready', 'https://m.media-amazon.com/images/M/MV5BY2JiYTNmZTctYTQ1OC00YjU4LWEwMjYtZjkwY2Y5MDI0OTU3XkEyXkFqcGdeQXVyNTI4MzE4MDU@._V1_SX300.jpg', '/Users/shanelupton/Documents/Vue/project/media-player/src/renderer/components/Views/ready.mp4'],
-    ['Ready', 'https://m.media-amazon.com/images/M/MV5BY2JiYTNmZTctYTQ1OC00YjU4LWEwMjYtZjkwY2Y5MDI0OTU3XkEyXkFqcGdeQXVyNTI4MzE4MDU@._V1_SX300.jpg', '/Users/shanelupton/Documents/Vue/project/media-player/src/renderer/components/Views/ready.mp4'],
-    ['Ready', 'https://m.media-amazon.com/images/M/MV5BY2JiYTNmZTctYTQ1OC00YjU4LWEwMjYtZjkwY2Y5MDI0OTU3XkEyXkFqcGdeQXVyNTI4MzE4MDU@._V1_SX300.jpg', '/Users/shanelupton/Documents/Vue/project/media-player/src/renderer/components/Views/ready.mp4'],
-    ['Ready', 'https://m.media-amazon.com/images/M/MV5BY2JiYTNmZTctYTQ1OC00YjU4LWEwMjYtZjkwY2Y5MDI0OTU3XkEyXkFqcGdeQXVyNTI4MzE4MDU@._V1_SX300.jpg', '/Users/shanelupton/Documents/Vue/project/media-player/src/renderer/components/Views/ready.mp4'],
-    ['Ready', 'https://m.media-amazon.com/images/M/MV5BY2JiYTNmZTctYTQ1OC00YjU4LWEwMjYtZjkwY2Y5MDI0OTU3XkEyXkFqcGdeQXVyNTI4MzE4MDU@._V1_SX300.jpg', '/Users/shanelupton/Documents/Vue/project/media-player/src/renderer/components/Views/ready.mp4'],
-    ['Ready', 'https://m.media-amazon.com/images/M/MV5BY2JiYTNmZTctYTQ1OC00YjU4LWEwMjYtZjkwY2Y5MDI0OTU3XkEyXkFqcGdeQXVyNTI4MzE4MDU@._V1_SX300.jpg', '/Users/shanelupton/Documents/Vue/project/media-player/src/renderer/components/Views/ready.mp4'],
-    ['Ready', 'https://m.media-amazon.com/images/M/MV5BY2JiYTNmZTctYTQ1OC00YjU4LWEwMjYtZjkwY2Y5MDI0OTU3XkEyXkFqcGdeQXVyNTI4MzE4MDU@._V1_SX300.jpg', '/Users/shanelupton/Documents/Vue/project/media-player/src/renderer/components/Views/ready.mp4'],
-    ['Ready', 'https://m.media-amazon.com/images/M/MV5BY2JiYTNmZTctYTQ1OC00YjU4LWEwMjYtZjkwY2Y5MDI0OTU3XkEyXkFqcGdeQXVyNTI4MzE4MDU@._V1_SX300.jpg', '/Users/shanelupton/Documents/Vue/project/media-player/src/renderer/components/Views/ready.mp4'],
-    ['Ready', 'https://m.media-amazon.com/images/M/MV5BY2JiYTNmZTctYTQ1OC00YjU4LWEwMjYtZjkwY2Y5MDI0OTU3XkEyXkFqcGdeQXVyNTI4MzE4MDU@._V1_SX300.jpg', '/Users/shanelupton/Documents/Vue/project/media-player/src/renderer/components/Views/ready.mp4'],
-    ['Ready', 'https://m.media-amazon.com/images/M/MV5BY2JiYTNmZTctYTQ1OC00YjU4LWEwMjYtZjkwY2Y5MDI0OTU3XkEyXkFqcGdeQXVyNTI4MzE4MDU@._V1_SX300.jpg', '/Users/shanelupton/Documents/Vue/project/media-player/src/renderer/components/Views/ready.mp4'],
-    ['Ready', 'https://m.media-amazon.com/images/M/MV5BY2JiYTNmZTctYTQ1OC00YjU4LWEwMjYtZjkwY2Y5MDI0OTU3XkEyXkFqcGdeQXVyNTI4MzE4MDU@._V1_SX300.jpg', '/Users/shanelupton/Documents/Vue/project/media-player/src/renderer/components/Views/ready.mp4'],
-    ['Ready', 'https://m.media-amazon.com/images/M/MV5BY2JiYTNmZTctYTQ1OC00YjU4LWEwMjYtZjkwY2Y5MDI0OTU3XkEyXkFqcGdeQXVyNTI4MzE4MDU@._V1_SX300.jpg', '/Users/shanelupton/Documents/Vue/project/media-player/src/renderer/components/Views/ready.mp4'],
-    ['Ready', 'https://m.media-amazon.com/images/M/MV5BY2JiYTNmZTctYTQ1OC00YjU4LWEwMjYtZjkwY2Y5MDI0OTU3XkEyXkFqcGdeQXVyNTI4MzE4MDU@._V1_SX300.jpg', '/Users/shanelupton/Documents/Vue/project/media-player/src/renderer/components/Views/ready.mp4'],
-    ['Ready', 'https://m.media-amazon.com/images/M/MV5BY2JiYTNmZTctYTQ1OC00YjU4LWEwMjYtZjkwY2Y5MDI0OTU3XkEyXkFqcGdeQXVyNTI4MzE4MDU@._V1_SX300.jpg', '/Users/shanelupton/Documents/Vue/project/media-player/src/renderer/components/Views/ready.mp4'],
-    ['Ready', 'https://m.media-amazon.com/images/M/MV5BY2JiYTNmZTctYTQ1OC00YjU4LWEwMjYtZjkwY2Y5MDI0OTU3XkEyXkFqcGdeQXVyNTI4MzE4MDU@._V1_SX300.jpg', '/Users/shanelupton/Documents/Vue/project/media-player/src/renderer/components/Views/ready.mp4'],
-    ['Ready', 'https://m.media-amazon.com/images/M/MV5BY2JiYTNmZTctYTQ1OC00YjU4LWEwMjYtZjkwY2Y5MDI0OTU3XkEyXkFqcGdeQXVyNTI4MzE4MDU@._V1_SX300.jpg', '/Users/shanelupton/Documents/Vue/project/media-player/src/renderer/components/Views/ready.mp4'],
-    ['Ready', 'https://m.media-amazon.com/images/M/MV5BY2JiYTNmZTctYTQ1OC00YjU4LWEwMjYtZjkwY2Y5MDI0OTU3XkEyXkFqcGdeQXVyNTI4MzE4MDU@._V1_SX300.jpg', '/Users/shanelupton/Documents/Vue/project/media-player/src/renderer/components/Views/ready.mp4'],
-    ['Ready', 'https://m.media-amazon.com/images/M/MV5BY2JiYTNmZTctYTQ1OC00YjU4LWEwMjYtZjkwY2Y5MDI0OTU3XkEyXkFqcGdeQXVyNTI4MzE4MDU@._V1_SX300.jpg', '/Users/shanelupton/Documents/Vue/project/media-player/src/renderer/components/Views/ready.mp4'],
-    ['Ready', 'https://m.media-amazon.com/images/M/MV5BY2JiYTNmZTctYTQ1OC00YjU4LWEwMjYtZjkwY2Y5MDI0OTU3XkEyXkFqcGdeQXVyNTI4MzE4MDU@._V1_SX300.jpg', '/Users/shanelupton/Documents/Vue/project/media-player/src/renderer/components/Views/ready.mp4'],
+    // ['Ready', 'https://m.media-amazon.com/images/M/MV5BY2JiYTNmZTctYTQ1OC00YjU4LWEwMjYtZjkwY2Y5MDI0OTU3XkEyXkFqcGdeQXVyNTI4MzE4MDU@._V1_SX300.jpg', '/Users/shanelupton/Documents/Vue/project/media-player/src/renderer/components/Views/ready.mp4'],
+    // ['Aquaman', 'https://m.media-amazon.com/images/M/MV5BMTA1NDM2ODUxOTNeQTJeQWpwZ15BbWU4MDgxOTEyMDYz._V1_SX300.jpg', '/Users/shanelupton/Downloads/aquaman.mov'],
+    // ['Lion King', 'https://m.media-amazon.com/images/M/MV5BMTg5NTY3OTU2N15BMl5BanBnXkFtZTgwOTgyOTA4NjM@._V1_SX300.jpg', '/Users/shanelupton/Downloads/lionking.mp4'],
+    // ['Lego Movie 2', 'https://m.media-amazon.com/images/M/MV5BNzI0MDI3MTM3MF5BMl5BanBnXkFtZTgwMjc3OTQ2NTM@._V1_SX300.jpg', '/Users/shanelupton/Downloads/lego.mov'],
   ],
   locations: ['~/', '~/'],
   musicLibrary: [],
@@ -68,8 +26,10 @@ const mutations = {
   setMusFolder(state, folders) {
     state.folders = [...folders];
   },
-  setScanFiles(state, files) {
-    state.movieLibrary = { ...state.movieLibrary, ...files };
+  setScanFiles(state, filesArr) {
+    console.log('setScanFiles', filesArr);
+    state.movieLibrary = filesArr;
+    console.log('state', state);
   },
   setCurDir(state, path) {
     state.curDir = path;
@@ -89,7 +49,6 @@ const actions = {
       if (err) throw err;
       const prevPath = myPath.split('/');
       prevPath.pop();
-      console.log('prevPath:', prevPath);
       const results = [['. . /', '', prevPath.join('/')]];
       files.forEach((file) => {
         if (file[0] !== '.') {
@@ -103,7 +62,7 @@ const actions = {
     });
   },
   scanFiles(context) {
-    const myPath = this.curDir;
+    const myPath = state.curDir;
     fs.readdir(myPath, (err, files) => {
       if (err) throw err;
       const results = [];
@@ -111,14 +70,26 @@ const actions = {
         if (file[0] !== '.') {
           const stats = fs.statSync(`${myPath}/${file}`);
           if (stats.isDirectory()) {
-            console.log('dir');
-          } else {
-            console.log((/\.(mov|mp4|mkv|wmv|mpg|mpeg)$/i).test(file));
-            // results.push([file, '', `${myPath}/${file}`]);
+            // scan reqursivly
+            // this.scanFiles is not a func
+          } else if ((/\.(mov|mp4|mkv|wmv|mpg|mpeg)$/i).test(file)) {
+            const fileName = file.replace((/\.(mov|mp4|mkv|wmv|mpg|mpeg)$/i), '').replace('-', ' ');
+            const request = `${TMDB_API_URL}&query=${fileName}`;
+            let posterPath = '';
+
+            const getPoster = async () => {
+              await fetch(request)
+                .then(res => res.json())
+                .then((res) => { posterPath = res.results[0].poster_path; })
+                .then(() => {
+                  results.push([fileName, `${POSTER_URL}${posterPath}`, `${myPath}/${file}`]);
+                });
+            };
+            getPoster();
           }
         }
       });
-      context.commit('setReadFolder', results);
+      context.commit('setScanFiles', results);
     });
   },
   changeMovLocation(context) {
@@ -126,14 +97,9 @@ const actions = {
   },
 };
 
-const getters = {
-
-};
-
 export default {
   namespaced: true,
   state,
   mutations,
   actions,
-  getters,
 };

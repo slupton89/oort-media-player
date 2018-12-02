@@ -53,6 +53,7 @@
     }
   },
   "dependencies": {
+    "dotenv": "^6.1.0",
     "electron": "^2.0.4",
     "font-awesome": "^4.7.0",
     "video.js": "^7.3.0",

@@ -28,7 +28,7 @@
           <i id="mute-icon" class="fas fa-volume-mute"></i>
         </button>
         <progress id="volume-bar" :value="volume" max="1" class="progress is-link"></progress>
-        <input class="slider is-fullwidth has-output-tooltip" id="volume-slider" :value="volume" step=".05"
+        <input class="slider is-fullwidth has-output-tooltip" id="volume-slider" :value="volume" step=".05" @mouseup="changeVol($event, value)"
           max="1" type="range">
       </div>
 
@@ -64,7 +64,6 @@ export default {
         controls: false,
         width: 888.89,
         height: 500,
-
         poster: 'https://surmon-china.github.io/vue-quill-editor/static/images/surmon-1.jpg',
       },
       isFull: false,
@@ -135,6 +134,10 @@ export default {
       this.currentTime = time;
       console.log(time);
       this.player.play();
+    },
+    changeVol(player, value) {
+      console.log(player.volume);
+      player.volume = value;
     },
     ...mapActions('Video', ['getDuration', 'curTime', 'muted', 'getFullScreen', 'player']),
   },
