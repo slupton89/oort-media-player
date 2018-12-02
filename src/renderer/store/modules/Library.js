@@ -75,17 +75,14 @@ const actions = {
           } else if ((/\.(mov|mp4|mkv|wmv|mpg|mpeg)$/i).test(file)) {
             const fileName = file.replace((/\.(mov|mp4|mkv|wmv|mpg|mpeg)$/i), '').replace('-', ' ');
             const request = `${TMDB_API_URL}&query=${fileName}`;
-            let posterPath = '';
 
             const getPoster = async () => {
               await fetch(request)
                 .then(res => res.json())
-                .then((res) => { posterPath = res.results[0].poster_path; })
-                .then(() => {
-                  results.push([fileName, `${POSTER_URL}${posterPath}`, `${myPath}/${file}`]);
-                });
+                .then(res => res.results[0].poster_path);
             };
-            getPoster();
+            const posterPath = getPoster();
+            results.push([fileName, `${POSTER_URL}${posterPath}`, `${myPath}/${file}`]);
           }
         }
       });
