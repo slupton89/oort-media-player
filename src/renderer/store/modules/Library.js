@@ -6,14 +6,15 @@ const state = {
   folders: [],
   curDir: '',
   movieLibrary: [
-    // ['Ready', 'https://m.media-amazon.com/images/M/MV5BY2JiYTNmZTctYTQ1OC00YjU4LWEwMjYtZjkwY2Y5MDI0OTU3XkEyXkFqcGdeQXVyNTI4MzE4MDU@._V1_SX300.jpg', '/Users/shanelupton/Documents/Vue/project/media-player/src/renderer/components/Views/ready.mp4'],
-    // ['Aquaman', 'https://m.media-amazon.com/images/M/MV5BMTA1NDM2ODUxOTNeQTJeQWpwZ15BbWU4MDgxOTEyMDYz._V1_SX300.jpg', '/Users/shanelupton/Downloads/aquaman.mov'],
-    // ['Lion King', 'https://m.media-amazon.com/images/M/MV5BMTg5NTY3OTU2N15BMl5BanBnXkFtZTgwOTgyOTA4NjM@._V1_SX300.jpg', '/Users/shanelupton/Downloads/lionking.mp4'],
-    // ['Lego Movie 2', 'https://m.media-amazon.com/images/M/MV5BNzI0MDI3MTM3MF5BMl5BanBnXkFtZTgwMjc3OTQ2NTM@._V1_SX300.jpg', '/Users/shanelupton/Downloads/lego.mov'],
+    ['Ready', 'https://m.media-amazon.com/images/M/MV5BY2JiYTNmZTctYTQ1OC00YjU4LWEwMjYtZjkwY2Y5MDI0OTU3XkEyXkFqcGdeQXVyNTI4MzE4MDU@._V1_SX300.jpg', '/Users/shanelupton/Documents/Vue/project/media-player/src/renderer/components/Views/ready.mp4'],
+    ['Aquaman', 'https://m.media-amazon.com/images/M/MV5BMTA1NDM2ODUxOTNeQTJeQWpwZ15BbWU4MDgxOTEyMDYz._V1_SX300.jpg', '/Users/shanelupton/Downloads/aquaman.mov'],
+    ['Lion King', 'https://m.media-amazon.com/images/M/MV5BMTg5NTY3OTU2N15BMl5BanBnXkFtZTgwOTgyOTA4NjM@._V1_SX300.jpg', '/Users/shanelupton/Downloads/lionking.mp4'],
+    ['Lego Movie 2', 'https://m.media-amazon.com/images/M/MV5BNzI0MDI3MTM3MF5BMl5BanBnXkFtZTgwMjc3OTQ2NTM@._V1_SX300.jpg', '/Users/shanelupton/Downloads/lego.mov'],
   ],
   locations: ['~/', '~/'],
   musicLibrary: [],
   musLoc: '',
+  myres: '',
 };
 
 const mutations = {
@@ -40,6 +41,9 @@ const mutations = {
   setMusicLoc(state) {
     state.locations[1] = state.curDir;
   },
+  testSet(state, res) {
+    state.myres = res;
+  },
 };
 
 const actions = {
@@ -61,28 +65,28 @@ const actions = {
       context.commit('setReadFolder', results);
     });
   },
-  scanFiles(context) {
-    const myPath = state.curDir;
+  scanFiles(context, myPath = state.curDir) {
     fs.readdir(myPath, (err, files) => {
       if (err) throw err;
       const results = [];
-      files.forEach((file) => {
+      files.forEach(async (file) => {
         if (file[0] !== '.') {
           const stats = fs.statSync(`${myPath}/${file}`);
-          if (stats.isDirectory()) {
-            // scan reqursivly
-            // this.scanFiles is not a func
-          } else if ((/\.(mov|mp4|mkv|wmv|mpg|mpeg)$/i).test(file)) {
-            const fileName = file.replace((/\.(mov|mp4|mkv|wmv|mpg|mpeg)$/i), '').replace('-', ' ');
+          if ((/\.(mov|mp4|mkv|wmv|mpg|mpeg)$/i).test(file)) {
+            const fileName = file.replace((/\.(mov|mp4|mkv|wmv|mpg|mpeg)$/i), '').replace('-', '%20');
             const request = `${TMDB_API_URL}&query=${fileName}`;
 
             const getPoster = async () => {
-              await fetch(request)
-                .then(res => res.json())
-                .then(res => res.results[0].poster_path);
+              const response = await fetch(request);
+              const data = await response.json();
+              return data.results[0].poster_path;
             };
-            const posterPath = getPoster();
-            results.push([fileName, `${POSTER_URL}${posterPath}`, `${myPath}/${file}`]);
+
+            results.push([fileName.replace('%20'), `${POSTER_URL}${await getPoster()}`, `${myPath}/${file}`]);
+          } else if (stats.isDirectory()) {
+            myPath = `${myPath}/${file}`;
+            console.log(myPath);
+            this.dispatch('Library/scanFiles', myPath);
           }
         }
       });

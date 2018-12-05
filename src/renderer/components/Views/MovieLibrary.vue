@@ -23,7 +23,7 @@ export default {
   },
   computed: {
     ...mapState('Playlist', ['customList']),
-    ...mapState('Library', ['movieLibrary']),
+    ...mapState('Library', ['movieLibrary', 'myres']),
   },
   methods: {
     ...mapActions('Playlist', ['createPlaylist']),

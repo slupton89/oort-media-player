@@ -9,9 +9,9 @@
 <section class="controlbar-container">
       <div id="video-controls">
 
-        <progress id="seek-bar" :value="curPlayTime" :max="duration" class="progress is-link" @mouseup="seekTo($event)"></progress>
+        <progress id="seek-bar" :value="curPlayTime" :max="duration" class="progress is-link" @mouseup="console.log(value)"></progress>
         <input class="slider is-fullwidth has-output-tooltip" id="seek-slider" :value="curPlayTime" step=".1" :max="duration"
-          type="range" @mousedown="player.pause()" >
+          type="range" @mousedown="player.pause(), console.log(value)">
 
         <button type="button" id="prev-btn" class="button is-outlined is-info">
           <i id="prev-icon" class="fas fa-backward"></i>
@@ -28,7 +28,7 @@
           <i id="mute-icon" class="fas fa-volume-mute"></i>
         </button>
         <progress id="volume-bar" :value="volume" max="1" class="progress is-link"></progress>
-        <input class="slider is-fullwidth has-output-tooltip" id="volume-slider" :value="volume" step=".05" @mouseup="changeVol($event, value)"
+        <input class="slider is-fullwidth has-output-tooltip" id="volume-slider" :value="volume" step=".05" @mouseUp="console.log(value), changeVol($event, value)"
           max="1" type="range">
       </div>
 

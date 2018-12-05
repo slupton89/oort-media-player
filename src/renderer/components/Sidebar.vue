@@ -4,7 +4,7 @@
       <section class="menu-container">
       <ul class="menu-list">
         <router-link class='r-link' to="/movlib">
-        <li style="height: 30px;" class="">
+        <li style="height: 30px;" :class="{ 'is-active': activeTab.nowplaying }" @click="setActiveTab($event)">
           <a class="">
             <span style="
               font-size: 18px;
@@ -52,7 +52,7 @@
         </router-link>
         <router-link class='r-link' to="/playing">
         <li>
-          <a class="is-active is-dark">
+          <a class="is-dark" :class="{ 'is-active': activeTab.nowplaying }" @click="setActiveTab($event)">
             <span style="
               font-size: 18px;
               margin-right: 5px;">
@@ -91,12 +91,24 @@ export default {
   },
   data() {
     return {
+      activeTab: {
+        nowplaying: true,
+      },
     };
   },
   methods: {
     ...mapActions('Playlist', ['createPlaylist', 'setIsActive']),
+    setActiveTab(selTab) {
+      for (let i = 0; i < this.activeTab; i + 1) {
+        if (this.activeTab[i] !== selTab) {
+          this.activeTab[i] = null;
+        }
+      }
+      this.activeTab[selTab] = true;
+    },
   },
 };
+
 </script>
 
 <style scoped>
