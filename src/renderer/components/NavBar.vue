@@ -46,11 +46,11 @@
         <file-manager></file-manager>
       </div>
       <button id="add-btn" v-if="curSel === 0" class="button is-success"
-        @click="changeMovLocation(), showAddLibrary(), scanFiles()">Set
+        @click="changeMovLocation(), showAddLibrary()">Set
         Movie Location
       </button>
       <button id="add-btn" v-else-if="curSel === 1" class="button is-success"
-        @click="changeMusLocation(), showAddLibrary(), scanFiles()">Set
+        @click="changeMusLocation(), showAddLibrary()">Set
         Music Location
       </button>
     </div>
@@ -73,7 +73,7 @@ export default {
     };
   },
   methods: {
-    ...mapActions('Library', ['changeMovLocation', 'changeMusLocation', 'scanFiles']),
+    ...mapActions('Library', ['changeMovLocation', 'changeMusLocation']),
     showAddLibrary() {
       if (!this.libModalIsOpen) {
         this.libModalIsOpen = true;
