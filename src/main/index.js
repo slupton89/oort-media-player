@@ -1,5 +1,4 @@
 import { app, BrowserWindow } from 'electron' // eslint-disable-line
-
 /**
  * Set `__static` path to static files in production
  * https://simulatedgreg.gitbooks.io/electron-vue/content/en/using-static-assets.html
@@ -14,9 +13,6 @@ const winURL = process.env.NODE_ENV === 'development'
   : `file://${__dirname}/index.html`;
 
 function createWindow() {
-  /**
-   * Initial window options
-   */
   mainWindow = new BrowserWindow({
     title: 'MediaPlayer',
     height: 680,

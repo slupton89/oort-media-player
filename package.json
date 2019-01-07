@@ -43,18 +43,18 @@
       ]
     },
     "mac": {
-      "icon": "build/icons/icon.icns"
+      "icon": "build/icon.png"
     },
     "win": {
-      "icon": "build/icons/icon.ico"
+      "icon": "build/icon.png"
     },
     "linux": {
-      "icon": "build/icons"
+      "icon": "build/"
     }
   },
   "dependencies": {
-    "dotenv": "^6.1.0",
-    "electron": "^2.0.4",
+    "dotenv": "^6.2.0",
+    "electron-store": "^2.0.0",
     "font-awesome": "^4.7.0",
     "video.js": "^7.3.0",
     "videojs-hotkeys": "^0.2.22",
@@ -66,6 +66,7 @@
   },
   "devDependencies": {
     "ajv": "^6.5.0",
+    "electron": "^4.0.1",
     "babel-core": "^6.26.3",
     "babel-eslint": "^8.2.3",
     "babel-loader": "^7.1.4",
@@ -74,7 +75,7 @@
     "babel-preset-stage-0": "^6.24.1",
     "babel-register": "^6.26.0",
     "babili-webpack-plugin": "^0.1.2",
-    "cfonts": "^2.1.2",
+    "cfonts": "^2.3.1",
     "chalk": "^2.4.1",
     "copy-webpack-plugin": "^4.5.1",
     "cross-env": "^5.1.6",

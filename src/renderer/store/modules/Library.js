@@ -1,12 +1,15 @@
+import Store from 'electron-store';
 
 const fs = require('fs');
 const { TMDB_API_URL, POSTER_URL } = require('../../config');
 
+const userData = new Store();
+
 const state = {
   folders: [],
   curDir: '',
-  movieLibrary: [],
   locations: ['~/', '~/'],
+  movieLibrary: [],
   musicLibrary: [],
   musLoc: '',
   myres: '',
@@ -26,20 +29,31 @@ const mutations = {
     console.log('setScanFiles', filesArr);
     state.movieLibrary = [...state.movieLibrary, filesArr];
     state.movieLibrary.sort();
+    userData.set('movieLibrary', state.movieLibrary);
+  },
+  setScanMusFiles(state, filesArr) {
+    console.log('setScanFiles', filesArr);
+    state.movieLibrary = [...state.movieLibrary, filesArr];
+    state.movieLibrary.sort();
+    userData.set('movieLibrary', state.movieLibrary);
   },
   setCurDir(state, path) {
     state.curDir = path;
   },
   setMovLoc(state) {
     state.locations[0] = state.curDir;
+    userData.set('locations', state.locations);
     this.dispatch('Library/scanFiles', state.locations[0]);
   },
   setMusicLoc(state) {
     state.locations[1] = state.curDir;
+    userData.set('locations', state.locations);
     this.dispatch('Library/scanFiles', state.locations[0]);
   },
-  testSet(state, res) {
-    state.myres = res;
+  setUserState(state) {
+    console.log(userData, userData.get(), userData.store);
+    // state = Object.assign({}, state, userData.get());
+    return state;
   },
 };
 
@@ -70,7 +84,7 @@ const actions = {
           const stats = fs.statSync(`${myPath}/${file}`);
           if ((/\.(mov|mp4|mkv|wmv|mpg|mpeg)$/i).test(file)) {
             let fileName = file.replace((/\.(mov|mp4|mkv|wmv|mpg|mpeg)$/i), '');
-            fileName = fileName.replace(/\./g, '%20').split('%20');
+            fileName = fileName.replace(/-_\./g, '%20').split('%20');
             fileName.length = 3;
 
             const request = `${TMDB_API_URL}&query=${fileName.join('%20')}`;
@@ -92,8 +106,8 @@ const actions = {
       });
     });
   },
-  changeMusLocation(context) {
-    context.commit('setMusLoc');
+  changeMovLocation(context) {
+    context.commit('setMovLoc');
   },
   scanMusFiles(context, myPath = state.curDir) {
     fs.readdir(myPath, (err, files) => {
@@ -118,16 +132,19 @@ const actions = {
             const res = await getPoster();
 
             const result = [res.title, `${POSTER_URL}${res.poster_path}`, `${myPath}/${file}`];
-            context.commit('setScanFiles', result);
+            context.commit('setScanMusFiles', result);
           } else if (stats.isDirectory()) {
-            this.dispatch('Library/scanFiles', `${myPath}/${file}`);
+            this.dispatch('Library/scanMusFiles', `${myPath}/${file}`);
           }
         }
       });
     });
   },
-  changeMovLocation(context) {
-    context.commit('setMovLoc');
+  changeMusLocation(context) {
+    context.commit('setMusLoc');
+  },
+  loadUserState(context) {
+    context.commit('setUserState');
   },
 };
 

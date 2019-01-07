@@ -13,9 +13,6 @@ import { mapState, mapActions } from 'vuex';
 
 export default {
   name: 'movielibrary',
-  components: {
-
-  },
   data() {
     return {
       arr: [],
