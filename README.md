@@ -1,8 +1,35 @@
-# media-player
+# Oort Media Player
 
-> An electron-vue project
+A simple and lightweight media player
 
-#### Build Setup
+## Table of Contents
+
+- [Tech Stack](#tech-stack)
+- [Description of Key Parts of Project](#key-parts)
+  - [Client Folder Structure](#client-folder-structure)
+- [Future Features](#future-features)
+- [Build Setup](#build-setup)
+
+## Tech Stack
+
+This project was built with the following:
+
+- 'Vue' for the frontend
+- 'Electron' for the framework
+- 'VideoJS' for the media player
+
+## Description of Key Parts of Project
+
+Oort Media Player uses Electron as the foundation of the project for crossplatform development
+VideoJS and HTML5 are used to play the media and to support many filetypes
+
+## Future Features
+
+- Add music library searchr and enable playlists
+- Add ability to manage your library from in the app
+- 
+
+## Build Setup
 
 ``` bash
 # install dependencies
@@ -20,6 +47,3 @@ npm run lint
 
 ```
 
----
-
-This project was generated with [electron-vue](https://github.com/SimulatedGREG/electron-vue)@[8fae476](https://github.com/SimulatedGREG/electron-vue/tree/8fae4763e9d225d3691b627e83b9e09b56f6c935) using [vue-cli](https://github.com/vuejs/vue-cli). Documentation about the original structure can be found [here](https://simulatedgreg.gitbooks.io/electron-vue/content/index.html).
