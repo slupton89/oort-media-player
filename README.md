@@ -10,6 +10,16 @@ A simple and lightweight media player
 - [Future Features](#future-features)
 - [Build Setup](#build-setup)
 
+## Screenshots
+
+**_Library_**
+The library shows you all of your media as high quality movie posters 
+![Library](https://github.com/slupton89/oort-media-player/raw/master/lib.png)
+
+**_Now Playing_**
+The now playing view is clean and minimal to keep your focus on what you are watching
+![NowPlaying](https://github.com/slupton89/oort-media-player/raw/master/np.png)
+
 ## Tech Stack
 
 This project was built with the following:
