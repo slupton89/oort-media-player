@@ -148,8 +148,8 @@ export default {
     font-size: 14px;
   }
 
-  .menu-container {
-  }
+  /* .menu-container {
+  } */
 
   .menu-label {
     margin-left: 5px;
