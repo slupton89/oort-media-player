@@ -8,9 +8,6 @@ const state = {
 };
 
 const mutations = {
-  // setPlayer(state, player) {
-
-  // },
   setVideo(state, video) {
     console.log(video);
     state = Object.assign(state, {

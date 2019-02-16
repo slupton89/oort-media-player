@@ -169,11 +169,6 @@ export default {
     bottom: 5px;
   }
 
-  #video-controls {
-    background-color: #1A2431;
-    height: 100px;
-  }
-
   #full-screen-btn {
     background-color: transparent;
     position: absolute;
@@ -205,10 +200,10 @@ export default {
 
   #next-btn {
     background-color: transparent;
-    /* border-radius: 50px; */
+    border-radius: 50px;
     border: 3px solid;
-    border-top-right-radius:25px;
-    border-bottom-left-radius: 15px;
+    /* border-top-right-radius:25px;
+    border-bottom-left-radius: 15px; */
     position: absolute;
     right: 350px;
     bottom: 20px;
@@ -255,8 +250,9 @@ export default {
   #prev-btn {
     background-color: transparent;
     border: 3px solid;
-    border-top-left-radius: 25px;
-    border-bottom-right-radius: 15px;
+    border-radius: 50%;
+    /* border-top-left-radius: 25px;
+    border-bottom-right-radius: 15px; */
     position: absolute;
     left: 350px;
     bottom: 20px;
@@ -288,6 +284,12 @@ export default {
   :focus {
     outline: transparent;
   }
+
+  #video-controls {
+    background-color: #1A2431;
+    height: 100px;
+  }
+
 
   #volume-bar {
     position: absolute;
